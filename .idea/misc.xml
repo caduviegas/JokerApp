@@ -5,10 +5,11 @@
       <map>
         <entry key="..\:/Users/engen/AndroidStudioProjects/JokerApp/app/src/main/res/layout/activity_main.xml" value="0.35260416666666666" />
         <entry key="..\:/Users/engen/AndroidStudioProjects/JokerApp/app/src/main/res/layout/app_bar_main.xml" value="0.358695652173913" />
-        <entry key="..\:/Users/engen/AndroidStudioProjects/JokerApp/app/src/main/res/layout/content_main.xml" value="0.358695652173913" />
+        <entry key="..\:/Users/engen/AndroidStudioProjects/JokerApp/app/src/main/res/layout/content_main.xml" value="0.33" />
         <entry key="..\:/Users/engen/AndroidStudioProjects/JokerApp/app/src/main/res/layout/fragment_about.xml" value="0.358695652173913" />
-        <entry key="..\:/Users/engen/AndroidStudioProjects/JokerApp/app/src/main/res/layout/fragment_home.xml" value="0.358695652173913" />
+        <entry key="..\:/Users/engen/AndroidStudioProjects/JokerApp/app/src/main/res/layout/fragment_home.xml" value="0.25" />
         <entry key="..\:/Users/engen/AndroidStudioProjects/JokerApp/app/src/main/res/layout/fragment_joker_day.xml" value="0.358695652173913" />
+        <entry key="..\:/Users/engen/AndroidStudioProjects/JokerApp/app/src/main/res/layout/item_category.xml" value="0.2210144927536232" />
         <entry key="..\:/Users/engen/AndroidStudioProjects/JokerApp/app/src/main/res/layout/nav_header_main.xml" value="0.358695652173913" />
         <entry key="..\:/Users/engen/AndroidStudioProjects/JokerApp/app/src/main/res/menu/activity_main_drawer.xml" value="0.36666666666666664" />
       </map>
