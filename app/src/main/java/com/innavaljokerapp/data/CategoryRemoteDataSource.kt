@@ -3,28 +3,41 @@ package com.innavaljokerapp.data
 import android.os.Handler
 import android.os.Looper
 import android.util.Log
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import retrofit2.create
 
 class CategoryRemoteDataSource {
 
     fun findAllCategories(callback: ListCategoryCallback) {
 
-        //INPUT
-        Handler(Looper.getMainLooper()).postDelayed({
-            val response = arrayListOf(
-                "Categoria 1",
-                "Categoria 2",
-                "Categoria 3",
-                "Categoria 4"
-            )
+        HTTPClient.retrofit() // Aqui tem a instancia do retrofit pronta
+            .create(ChuckNorrisAPI::class.java)
+            .findAllCategories()
+            .enqueue(object : Callback<List<String>> {
 
-            Log.i("Teste", response.toString())
+                override fun onResponse(
+                    call: Call<List<String>>,
+                    response: Response<List<String>>
+                ) {
+                    if (response.isSuccessful) {
+                        val categories = response.body()
+                        callback.onSuccess(categories ?: emptyList())
+                    } else {
+                        // Quando o servidor devolve status de erro < 500
+                        val error = response.errorBody()?.string()
+                        callback.onError(error ?: "Erro Desconhecido")
+                    }
+                    callback.onComplete()
+                }
 
-            callback.onSuccess(response)
-            // onError("FALHA NA CONEXÃO. TENTE NOVAMENTE MAIS TARDE!")
+                override fun onFailure(call: Call<List<String>>, t: Throwable) {
+                    callback.onError(t.message ?: "Erro Interno")
+                    callback.onComplete()
+                }
 
-            callback.onComplete()
-
-        }, 4000)
+            })
 
     }
 }
