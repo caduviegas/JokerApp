@@ -1,5 +1,6 @@
 package com.innavaljokerapp.presentation
 
+import android.graphics.Color
 import android.os.Handler
 import android.os.Looper
 import com.innavaljokerapp.data.CategoryRemoteDataSource
@@ -20,8 +21,19 @@ class HomePresenter(
 
     override fun onSuccess(response: List<String>) {
 
-        val categories = response.map {
-            Category(it, 0xFFFF0000)
+        val start = 320// H-matiz
+        val end = 359 // H-matiz
+        val diff = (end-start)  / response.size
+
+        val categories = response.mapIndexed { index, s ->
+            val hsv = floatArrayOf(
+
+                start + (diff * index).toFloat(),
+                100.0f,
+                100.0f
+            )
+
+            Category(s, Color.HSVToColor(hsv).toLong())
         }
         view.showCategories(categories)
     }
