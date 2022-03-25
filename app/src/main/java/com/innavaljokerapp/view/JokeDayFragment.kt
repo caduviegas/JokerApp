@@ -1,4 +1,4 @@
-package com.innavaljokerapp
+package com.innavaljokerapp.view
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,6 +10,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
+import com.innavaljokerapp.R
 import com.innavaljokerapp.model.Joke
 import com.innavaljokerapp.presentation.JokeDayPresenter
 import com.squareup.picasso.Picasso

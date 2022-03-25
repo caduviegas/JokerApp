@@ -1,6 +1,6 @@
 package com.innavaljokerapp.presentation
 
-import com.innavaljokerapp.JokeDayFragment
+import com.innavaljokerapp.view.JokeDayFragment
 import com.innavaljokerapp.data.JokeCallback
 import com.innavaljokerapp.data.JokeDayRemoteDataSource
 import com.innavaljokerapp.model.Joke
