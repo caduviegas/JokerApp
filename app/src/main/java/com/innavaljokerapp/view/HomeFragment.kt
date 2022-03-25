@@ -26,7 +26,7 @@ class HomeFragment : Fragment() {
         super.onCreate(savedInstanceState)
 
         val dataSource = CategoryRemoteDataSource()
-        presenter = HomePresenter(this,dataSource)
+        presenter = HomePresenter(this, dataSource)
     }
 
     override fun onCreateView(
@@ -45,16 +45,22 @@ class HomeFragment : Fragment() {
         val recyclerView = view.findViewById<RecyclerView>(R.id.rv_main)
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
 
-        presenter.findAllCategories()
-
+        if (adapter.itemCount == 0) {
+            presenter.findAllCategories()
+        }
 
         recyclerView.adapter = adapter
 
-        adapter.notifyDataSetChanged()
+        adapter.setOnItemClickListener { item, view ->
+            val bundle = Bundle()
+            val categoryName = (item as CategoryItem).category.name
+            bundle.putString(JokeFragment.CATEGORY_KEY, categoryName)
+            findNavController().navigate(R.id.action_nav_home_to_nav_joke, bundle)
+        }
     }
 
     fun showCategories(response: List<Category>) {
-        val categories = response.map {CategoryItem(it)}
+        val categories = response.map { CategoryItem(it) }
         adapter.addAll(categories)
         adapter.notifyDataSetChanged()
     }
@@ -63,11 +69,11 @@ class HomeFragment : Fragment() {
         progressBar.visibility = View.VISIBLE
     }
 
-    fun hideProgress(){
+    fun hideProgress() {
         progressBar.visibility = View.GONE
     }
 
-    fun showFailure(message:String){
-        Toast.makeText(requireContext(),message,Toast.LENGTH_SHORT).show()
+    fun showFailure(message: String) {
+        Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
     }
 }
