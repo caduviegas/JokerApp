@@ -1,7 +1,6 @@
 package com.innavaljokerapp.view
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,6 +14,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.innavaljokerapp.R
 import com.innavaljokerapp.model.Joke
 import com.innavaljokerapp.presentation.JokePresenter
+import com.squareup.picasso.Picasso
 
 class JokeFragment : Fragment() {
 
@@ -49,6 +49,7 @@ class JokeFragment : Fragment() {
         activity?.findViewById<Toolbar>(R.id.toolbar)?.title = categoryName
         progressBar = view.findViewById(R.id.progress_bar)
         textView = view.findViewById(R.id.txt_joke)
+        imageView = view.findViewById(R.id.img_joke)
 
         view.findViewById<FloatingActionButton>(R.id.fab).setOnClickListener {
             presenter.findBy(categoryName)
@@ -59,7 +60,7 @@ class JokeFragment : Fragment() {
 
     fun showJoke(joke: Joke) {
         textView.text = joke.text
-        // TODO: adicionar imagem
+        Picasso.get().load(joke.iconUrl).into(imageView)
     }
 
     fun showProgress() {
